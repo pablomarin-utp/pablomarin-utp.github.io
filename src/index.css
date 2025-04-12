@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-primary-950;
+  }
+
+  h1, h2, h3 {
+    @apply font-pixel;
+  }
+}
+
+.tech-icon {
+  @apply w-16 h-16 p-2 rounded-lg bg-primary-900 hover:bg-primary-800 
+         transition-all duration-300 hover:scale-110 hover:shadow-lg 
+         hover:shadow-primary-500/20 cursor-pointer;
+}
+
+.tech-icon img {
+  @apply w-full h-full object-contain filter brightness-90 hover:brightness-100;
+}
+
+/* Responsive text classes */
+@layer utilities {
+  .text-responsive-hero {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-pixel;
+  }
+  
+  .text-responsive-subtitle {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-pixel;
+  }
+  
+  .text-responsive-section {
+    @apply text-xl sm:text-2xl md:text-3xl font-pixel;
+  }
+}
