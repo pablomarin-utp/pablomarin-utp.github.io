@@ -269,7 +269,7 @@ function App() {
                 I specialize in creating intelligent systems that solve real-world problems.
 I'm currently pursuing a degree in Systems and Computer Engineering while also learning extensively on my own.
 I've worked collaboratively on various projects, strengthening both my technical and teamwork skills.
-My goal is to make AI more accessible and beneficial for everyday applications.
+My goal is to make AI more accessible and beneficial for everyday applications. prueba
                 </p>
               </div>
               <div className="group hover:transform hover:scale-105 transition-all duration-300">
