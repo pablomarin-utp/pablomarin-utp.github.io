@@ -40,3 +40,65 @@
     @apply text-xl sm:text-2xl md:text-3xl font-pixel;
   }
 }
+/* Pablo Marín - Typing animation with blinking cursor bar */
+@keyframes name-typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes cursor-blink {
+  0%, 61% { opacity: 1; }
+  62%, 100% { opacity: 0; }
+}
+
+@keyframes text-blink {
+  0%, 61% { opacity: 1; }
+  62%, 100% { color: rgb(255, 71, 71); opacity: 0.5; }
+}
+
+.animate-name-typing-with-cursor {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  /* Asegúrate de no tener ninguna propiedad de cursor (como border-right) aquí */
+  animation: name-typing 3s steps(30, end) forwards,
+             text-blink 2s step-end infinite;
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  border-right: none; /* Evita que se muestre otro cursor */
+}
+
+.animate-name-typing-with-cursor::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 1em; /* Se ajusta según el tamaño de fuente */
+  background-color: currentColor;
+  margin-left: 2px; /* Espacio entre el texto y el cursor */
+  animation: cursor-blink 2s step-end infinite;
+}
+
+
+/* AI Research Engineer & Developer - Soft blinking with delay */
+@keyframes title-soft-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-title-soft-blink {
+  opacity: 0;
+  animation: fade-in 1s ease-in forwards, 
+             title-soft-blink 3s ease-in-out infinite;
+  animation-delay: 0s, 3s; /* Start normal blinking after fade-in */
+}
+
+/* Basic fade-in animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 2s ease-in-out forwards;
+}
+

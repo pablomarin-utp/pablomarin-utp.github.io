@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { Github, Linkedin, Mail, Brain, Bot, Code, Send, Users, Cpu, MessageSquare, Zap, Lightbulb } from 'lucide-react';
-import ParticlesBackground from './components/ParticlesBackground';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -119,6 +118,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-primary-950 text-gray-100">
+
+
       {/* Fixed Header */}
       <header className="fixed top-0 left-0 right-0 bg-primary-950/90 backdrop-blur-sm z-50 border-b border-primary-800">
         <nav className="container mx-auto px-4 py-4">
@@ -149,82 +150,102 @@ function App() {
           {techTip}
         </div>
       )}
-      
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-primary-950" />
-        <div className="container mx-auto px-4 py-16 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="overflow-hidden inline-block">
-              <h1 className="text-responsive-hero mb-6 text-white whitespace-nowrap overflow-hidden border-r-4 border-primary-400 animate-typing">
-                Pablo Marín
-              </h1>
+{/* Hero Section */}
+<section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+  <div className="absolute inset-0 bg-gradient-to-br from-primary-900/50 to-primary-950" />
+  <div className="container mx-auto px-4 py-16 relative z-10">
+    <div className="max-w-3xl mx-auto text-center">
+      <div className="overflow-hidden inline-block">
+        <h1 className="text-responsive-hero mb-6 text-white whitespace-nowrap overflow-hidden border-r-4 border-primary-400 animate-name-typing-with-cursor">
+          Pablo Marín
+        </h1>
+      </div>
+      <p className="text-responsive-subtitle mb-8 text-primary-200 animate-title-soft-blink">
+        AI Research Engineer & Developer
+      </p>
+      <p className="text-lg sm:text-xl text-primary-300 mb-12 animate-fade-in">
+        Crafting intelligent solutions at the intersection of AI and human experience
+      </p>
+      <a 
+        href="#contact" 
+        className="inline-block bg-primary-400 hover:bg-primary-500 text-white px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 animate-glow"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </div>
+</section>
+{/* Projects Section */}
+<section
+  id="projects"
+  ref={projectsRef}
+  className={`py-16 sm:py-20 bg-primary-900 transition-all duration-500 ${
+    projectsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+  }`}
+>
+  <div className="container mx-auto px-4">
+    <h2 className="text-responsive-section mb-12 text-center">Featured Projects</h2>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {[
+        {
+          title: 'Circular motion app',
+          description:
+            'Physics simulation of circular motion with real-time data visualization and matplotlib grafication',
+          image:
+            'https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&q=80&w=800',
+          tech: ['Python', 'Opencv', 'Matplotlib'],
+          url: 'https://example.com/circular-motion-app'
+        },
+        {
+          title: 'AI Chat Assistant',
+          description:
+            'Contextual chatbot with natural language understanding capabilities',
+          image:
+            'https://images.unsplash.com/photo-1676320831395-7b7d2c808801?auto=format&fit=crop&q=80&w=800',
+          tech: ['PyTorch', 'FastAPI', 'React'],
+          url: 'https://example.com/ai-chat-assistant'
+        },
+        {
+          title: 'Smart Data Analysis',
+          description:
+            'Automated data analysis platform using machine learning',
+          image:
+            'https://images.unsplash.com/photo-1668004417206-467d234fa323?auto=format&fit=crop&q=80&w=800',
+          tech: ['Scikit-learn', 'pandas', 'Node.js'],
+          url: 'https://example.com/smart-data-analysis'
+        }
+      ].map((project, index) => (
+        <a
+          key={index}
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-primary-950 rounded-lg overflow-hidden transition-all duration-300 shadow-xl cursor-pointer hover:scale-105 hover:shadow-[0_0_20px_5px_rgba(255,0,0,0.6)]"
+        >
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-48 object-cover"
+          />
+          <div className="p-4 sm:p-6">
+            <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+            <p className="text-gray-400 mb-4">{project.description}</p>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="px-3 py-1 bg-primary-800 rounded-full text-sm hover:bg-primary-700 transition-colors"
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
-            <p className="text-responsive-subtitle mb-8 text-primary-200 animate-fade-in">
-              AI Research Engineer & Developer
-            </p>
-            <p className="text-lg sm:text-xl text-primary-300 mb-12 animate-fade-in">
-              Crafting intelligent solutions at the intersection of AI and human experience
-            </p>
-            <a 
-              href="#contact" 
-              className="inline-block bg-primary-400 hover:bg-primary-500 text-white px-6 sm:px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 animate-glow"
-            >
-              Get in Touch
-            </a>
           </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className={`py-16 sm:py-20 bg-primary-900 transition-all duration-500 ${projectsInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-        <div className="container mx-auto px-4">
-          <h2 className="text-responsive-section mb-12 text-center">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                title: 'Circular motion app',
-                description: 'Physics simulation of circular motion with real-time data visualization and matplotlib grafication',
-                image: 'https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&q=80&w=800',
-                tech: ['Python', 'Opencv', 'Matplotlib']
-              },
-              {
-                title: 'AI Chat Assistant',
-                description: 'Contextual chatbot with natural language understanding capabilities',
-                image: 'https://images.unsplash.com/photo-1676320831395-7b7d2c808801?auto=format&fit=crop&q=80&w=800',
-                tech: ['PyTorch', 'FastAPI', 'React']
-              },
-              {
-                title: 'Smart Data Analysis',
-                description: 'Automated data analysis platform using machine learning',
-                image: 'https://images.unsplash.com/photo-1668004417206-467d234fa323?auto=format&fit=crop&q=80&w=800',
-                tech: ['Scikit-learn', 'pandas', 'Node.js']
-              }
-            ].map((project, index) => (
-              <div 
-                key={index} 
-                className="bg-primary-950 rounded-lg overflow-hidden transition-all duration-300 shadow-xl hover:animate-card-hover"
-              >
-                <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, techIndex) => (
-                      <span 
-                        key={techIndex} 
-                        className="px-3 py-1 bg-primary-800 rounded-full text-sm hover:bg-primary-700 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
 {/* Technologies Section */}
 <section 
   id="technologies" 
@@ -235,27 +256,30 @@ function App() {
 >
   <div className="container mx-auto px-4">
     <h2 className="text-responsive-section mb-12 text-center">Technologies</h2>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-8 max-w-6xl mx-auto justify-items-center">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 sm:gap-10 max-w-6xl mx-auto justify-items-center">
       {technologies.map((tech, index) => (
         <a
           key={index}
           href={tech.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="tech-icon group animate-fade-in"
+          className="group animate-fade-in"
           style={{ animationDelay: `${index * 100}ms` }}
         >
-          <img
-            src={tech.icon}
-            alt={tech.name}
-            className="w-16 h-16 object-scale-down bg-primary-900 rounded p-0 group-hover:animate-float"
-          />
+          <div className="w-28 h-28 bg-primary-900 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:animate-float group-hover:shadow-[0_0_15px_5px_rgba(255,0,0,0.6)] group-hover:brightness-125">
+            <img
+              src={tech.icon}
+              alt={tech.name}
+              className="max-w-[70%] max-h-[70%]"
+            />
+          </div>
           <span className="sr-only">{tech.name}</span>
         </a>
       ))}
     </div>
   </div>
 </section>
+
       {/* About Section */}
       <section id="about" ref={aboutRef} className={`py-16 sm:py-20 bg-primary-900 transition-all duration-500 ${aboutInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <div className="container mx-auto px-4">
@@ -269,7 +293,7 @@ function App() {
                 I specialize in creating intelligent systems that solve real-world problems.
 I'm currently pursuing a degree in Systems and Computer Engineering while also learning extensively on my own.
 I've worked collaboratively on various projects, strengthening both my technical and teamwork skills.
-My goal is to make AI more accessible and beneficial for everyday applications. prueba
+
                 </p>
               </div>
               <div className="group hover:transform hover:scale-105 transition-all duration-300">
@@ -278,7 +302,6 @@ My goal is to make AI more accessible and beneficial for everyday applications. 
                 <p className="text-gray-400">
                 I'm currently exploring the frontiers of reinforcement learning and working on projects that combine multiple AI disciplines.
 I'm specializing in artificial intelligence for scientific development and applying computer vision to support environmental solutions.
-My goal is to make AI more accessible and beneficial for everyday applications.
                 </p>
               </div>
             </div>
