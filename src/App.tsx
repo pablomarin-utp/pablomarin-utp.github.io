@@ -192,28 +192,20 @@ function App() {
           description:
             'Physics simulation of circular motion with real-time data visualization and matplotlib grafication',
           image:
-            'https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&q=80&w=800',
+            './circular motion.png',
           tech: ['Python', 'Opencv', 'Matplotlib'],
-          url: 'https://example.com/circular-motion-app'
+          url: 'https://github.com/pablomarin-utp/Circular_motion'
         },
         {
-          title: 'AI Chat Assistant',
+          title: 'Path of the Force',
           description:
-            'Contextual chatbot with natural language understanding capabilities',
+            'CRUD application for managing and visualizing data related to the star wars universe',
           image:
-            'https://images.unsplash.com/photo-1676320831395-7b7d2c808801?auto=format&fit=crop&q=80&w=800',
-          tech: ['PyTorch', 'FastAPI', 'React'],
-          url: 'https://example.com/ai-chat-assistant'
+            'force.png',
+          tech: ['C++', 'Github', 'CRUD'],
+          url: 'https://github.com/pablomarin-utp/Path_of_the_Force'
         },
-        {
-          title: 'Smart Data Analysis',
-          description:
-            'Automated data analysis platform using machine learning',
-          image:
-            'https://images.unsplash.com/photo-1668004417206-467d234fa323?auto=format&fit=crop&q=80&w=800',
-          tech: ['Scikit-learn', 'pandas', 'Node.js'],
-          url: 'https://example.com/smart-data-analysis'
-        }
+
       ].map((project, index) => (
         <a
           key={index}
